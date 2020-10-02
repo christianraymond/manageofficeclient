@@ -6,10 +6,12 @@ html, body{
 }
 
 .container {
-  margin: 80px auto 0 auto;
+  margin: 100px auto 0 auto;
   max-width: 1200px;
 }
-
+.nav-container svg{
+  color: #fff;
+}
 a{
   text-decoration: none;
   font-size: medium;

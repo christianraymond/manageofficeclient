@@ -1,137 +1,139 @@
 import React, { Component, Fragment } from "react";
+import withStyles from "@material-ui/styles/withStyles";
 import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
-//MUI staff
+import MyButton from '../util/MyButton';
+//Mui stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Tooltip from "@material-ui/core/Tooltip";
-//Icons
-import IconButton from "@material-ui/core/IconButton";
+///MUI Icons
 import EditIcon from "@material-ui/icons/Edit";
 //Redux stuff
 import { connect } from "react-redux";
-import { editeOfficeDetails } from "../redux/actions/officeAction";
+import { editOfficeDetails } from "../redux/actions/officeAction";
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.spreadThis,
 });
 
 export class EditOffice extends Component {
   state = {
     officename: "",
-    officelocation: "",
+    officeEmail: "",
     officeTell: "",
-    officeEmal: "",
+    officeAddress: "",
+    officeMaxOcupant: "",
     open: false,
   };
-  mapOfficeDetailsToState = (officeDetails) => {
-
-  };
+  mapUserDetailsTopState = (officeDetails) => {
+    this.setState({
+      officename: officeDetails.officename ? officeDetails.officename : '',
+      officeEmail: officeDetails.officeEmail ? officeDetails.officeEmail : '',
+      officeTell: officeDetails.officeTell ? officeDetails.officeTell : '',
+      officeAddress: officeDetails.officeAddress ? officeDetails.officeAddress : '',
+      officeMaxOcupant: officeDetails.officeMaxOcupant ? officeDetails.officeMaxOcupant : '',
+    })
+  }
   handleOpen = () => {
     this.setState({ open: true });
-    this.mapOfficeDetailsToState(this.props.officeDetails);
+    this.mapUserDetailsTopState(this.props.officeDetails);
   };
   handleClose = () => {
     this.setState({ open: false });
   };
   componentDidMount() {
     const { officeDetails } = this.props;
-    this.mapOfficeDetailsToState(officeDetails);
+    this.mapUserDetailsTopState(officeDetails);
   }
   handleChange = (event) => {
-      this.setState({
-          [event.target.name]: event.target.value
-      })
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
   handleSubmit = () => {
-      const detailsTobeChanged = {
-          officename: this.state.officename,
-          officelocation: this.state.officelocation,
-          officeTell: this.state.officeTell,
-          officeEmal: this.state.officeEmal
-      };
-      this.props.editeOfficeDetails(detailsTobeChanged);
-      this.handleClose();
-  }
+    const editedOfficeDetails = {
+      officename: this.state.officename,
+      officeEmail: this.state.officeEmail,
+      officeTell: this.state.officeTell,
+      officeAddress: this.state.officeAddress,
+      officeMaxOcupant: this.state.officeMaxOcupant
+    };
+    this.props.editOfficeDetails(editedOfficeDetails)
+    this.handleClose()
+  };
   render() {
-      const { classes } = this.props;
+    const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title="Edit office" placement="top">
-          <IconButton onClick={this.handleOpen} >
-            <EditIcon color="primary" />
-          </IconButton>
-        </Tooltip>
-        <Dialog
-          open={this.state.open}
-          onClose={this.state.handleClose}
-          fullWidth
-          maxWidth="sm"
-        >
-          <DialogTitle>Edit office details</DialogTitle>
-          <DialogContent>
-              <form>
-                  <TextField
-                   name="office-name"
-                   type="text"
-                   lable="Office name"
-                   multiline
-                   rows="3"
-                   placeholder="Office name"
-                 
-                   value={this.state.officename}
-                   onChange={this.handleChange}
-                   fullWidth
-                   />
-                    <TextField
-                   name="office location"
-                   type="text"
-                   lable="Office location"
-                   multiline
-                   rows="3"
-                   placeholder="Office location"
-                
-                   value={this.state.officelocation}
-                   onChange={this.handleChange}
-                   fullWidth
-                   />
-                    <TextField
-                   name="office-email"
-                   type="text"
-                   lable="Office email"
-                   multiline
-                   rows="3"
-                   placeholder="Office email"
-                  
-                   value={this.state.officeEmal}
-                   onChange={this.handleChange}
-                   fullWidth
-                   />
-                    <TextField
-                   name="office-phone"
-                   type="text"
-                   lable="Office phone"
-                   multiline
-                   rows="3"
-                   placeholder="Office phone"
-                  
-                   value={this.state.officeTell}
-                   onChange={this.handleChange}
-                   fullWidth
-                   />
-              </form>
+        <MyButton tip="Eidt office details" onClick={this.handleOpen} btnClassName={classes.button}>
+          <EditIcon color="primary"/>
+        </MyButton>
+        <Dialog open={this.state.open} onClose={this.handleClose} maxWidth="xl">
+          <DialogTitle style={{textAlign:"center",color:"slategray"}}>Edit Office</DialogTitle>
+          <DialogContent style={{width:"350px auto"}}>
+            <form style={{textAlign:"center"}}>
+              <TextField
+              name="officename"
+              type="text"
+              label="Office Name"
+              rows="3"
+              placeholder="office name"
+              className={classes.TextField}
+              value={this.state.officename}
+              onChange={this.handleChange}
+              /><br/>
+               <TextField
+              name="officeEmail"
+              type="text"
+              label="Office Email"
+              rows="3"
+              placeholder="office Email"
+              className={classes.TextField}
+              value={this.state.officeEmail}
+              onChange={this.handleChange}
+              /><br/>
+              <TextField
+              name="officeTell"
+              type="text"
+              label="Office Tell"
+              rows="3"
+              placeholder="office Tell"
+              className={classes.TextField}
+              value={this.state.officeTell}
+              onChange={this.handleChange}
+              /><br/>
+              <TextField
+              name="officeAddress"
+              type="text"
+              label="Office Address"
+              rows="3"
+              placeholder="office Address"
+              className={classes.TextField}
+              value={this.state.officeAddress}
+              onChange={this.handleChange}
+              /><br/>
+               <TextField
+              name="officeMaxOcupant"
+              type="text"
+              label="Max number of occupants"
+              rows="3"
+              placeholder="Max number of occupants"
+              className={classes.TextField}
+              value={this.state.officeMaxOcupant}
+              onChange={this.handleChange}
+              />
+            </form>
           </DialogContent>
-          <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
-                  Cancel
-              </Button>
-              <Button onClick={this.handleSubmit} color="primary">
-                  Save
-              </Button>
+          <DialogActions style={{textAlign:"center"}}>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleSubmit} color="primary">
+              Save
+            </Button>
           </DialogActions>
         </Dialog>
       </Fragment>
@@ -140,11 +142,14 @@ export class EditOffice extends Component {
 }
 
 EditOffice.propTypes = {
-  editeOfficeDetails: PropTypes.func.isRequired,
+  editOfficeDetails: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  officeDetails: state.user.officeDetails,
+  officeDetails: state.office.officeDetails,
 });
-export default EditOffice;
+
+export default connect(mapStateToProps, { editOfficeDetails })(
+  withStyles(styles)(EditOffice)
+);

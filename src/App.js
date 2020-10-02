@@ -10,7 +10,7 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import { Provider } from 'react-redux'
 import store from "./redux/store";
 import { SET_AUTHENTICATED } from './redux/types';
-import { logoutUser, getUserData } from './redux/actions/dataAction';
+import { logoutUser, getUserData } from './redux/actions/userAtion'
 //Component
 import Navbar from "./components/Navbar";
 //Pages

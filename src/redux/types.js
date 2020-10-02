@@ -8,6 +8,9 @@ export const SET_ERRORS = 'SET_ERRORS';
 export const LOADING_UI = 'LOADING_UI';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 //Office reducer types
-export const SET_OFFICE = 'SET_OFFICE';
-export const LOADING_OFFICE = 'LOADING_OFFICE'
+export const LOADING_OFFICE = 'LOADING_OFFICE';
 //Data reducer types
+export const LOADING_DATA = 'LOADING_DATA';
+export const SET_OFFICE = 'SET_OFFICE';
+export const SET_OFFICES = 'SET_OFFICE';
+export const DELETE_OFFICE = 'DELETE_OFFICE'

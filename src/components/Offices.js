@@ -1,22 +1,23 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import EditOffice from './EditOffice';
+import DeleteOffice from './DeleteOffice';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaPhoneSquare } from "react-icons/fa";
 import { FaUserFriends } from "react-icons/fa";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
-//Icons/
 
 //MUI stuff
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
 const styles = {
   card: {
+    position: 'relative',
     display: "flex",
     marginBottom: 20,
     height: 150,
@@ -68,8 +69,8 @@ export class Offices extends Component {
           <Grid item xs={1}>
             <FaUserFriends className={classes.imageStyle} />
           </Grid>
-          <Grid iem xm={1}>
-          <Typography>04/{officeMaxOcupant}</Typography>
+          <Grid item xm={1}>
+          <Typography>07/{officeMaxOcupant}</Typography>
           </Grid>
           <Grid item xs={4}>
             <CardContent className={classes.content}>
@@ -97,8 +98,11 @@ export class Offices extends Component {
               </Typography>
             </CardContent>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} style={{marginLeft:"352px"}}>
             <EditOffice/>
+          </Grid>
+          <Grid item xs={1}>
+            <DeleteOffice />
           </Grid>
         </Card>
       </React.Fragment>
@@ -106,4 +110,9 @@ export class Offices extends Component {
   }
 }
 
-export default withStyles(styles)(Offices);
+Offices.prototypes = {
+  office: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+}
+
+export default (withStyles(styles)(Offices));

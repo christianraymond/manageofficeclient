@@ -64,23 +64,9 @@ const styles = {
 
 export class OfficeProfile extends Component {
   render() {
-    const {
-      classes,
-      office: {
-        officeDetails: {
-          officeName,
-          officeLocation,
-          officeEmail,
-          officeTellNumber,
-          officeMaxOcupant,
-          officeColorUrl,
-          authenticated,
-        },
-        loading,
-      },
-    } = this.props;
+    const { classes, loading } = this.props;
     let profileMarkup = !loading ? (
-      <Paper classes={classes.paper}>
+      <Paper>
         <Typography variant="body2" align="center">
           In the future you will need to register before accessing this page!
         </Typography>
@@ -122,7 +108,7 @@ const mapStateToProps = (state) => ({
 OfficeProfile.propTypes = {
   office: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired
+  // logoutUser: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps)(withStyles(styles)(OfficeProfile));

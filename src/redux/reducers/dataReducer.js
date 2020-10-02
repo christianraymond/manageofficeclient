@@ -1,5 +1,5 @@
 //THis file handle every old actions relate to data.
-import { SET_OFFICES, LOADING_DATA, DELETE_OFFICE } from "../types";
+import { SET_OFFICES, LOADING_DATA, DELETE_OFFICE, ADD_OFFICE, LOADING_UI, SET_ERRORS, CLEAR_ERRORS } from "../types";
 
 const initialState = {
   offices: [],
@@ -27,6 +27,14 @@ export default function (state = initialState, action) {
           return {
               ...state
           }
+      case ADD_OFFICE:
+        return {
+          ...state,
+          offices: [
+            action.payload,
+            ...state.offices
+          ]
+        }    
     default: {
       return state;
     }

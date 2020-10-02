@@ -13,4 +13,5 @@ export const LOADING_OFFICE = 'LOADING_OFFICE';
 export const LOADING_DATA = 'LOADING_DATA';
 export const SET_OFFICE = 'SET_OFFICE';
 export const SET_OFFICES = 'SET_OFFICE';
-export const DELETE_OFFICE = 'DELETE_OFFICE'
+export const DELETE_OFFICE = 'DELETE_OFFICE';
+export const  ADD_OFFICE = ' ADD_OFFICE'

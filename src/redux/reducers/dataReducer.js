@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
     case DELETE_OFFICE:
       let index = state.offices.findIndex(
           (office) => office.officeId === action.payload.officeId);
-          state.splice(index, 1)
+          state.offices.splice(index, 1)
           return {
               ...state
           }

@@ -61,6 +61,7 @@ export class Offices extends Component {
         officeEmail,
         officeTellNumber,
         officeMaxOcupant,
+        officeId,
       },
     } = this.props;
     return (
@@ -102,7 +103,7 @@ export class Offices extends Component {
             <EditOffice/>
           </Grid>
           <Grid item xs={1}>
-            <DeleteOffice />
+            <DeleteOffice officeId={officeId} />
           </Grid>
         </Card>
       </React.Fragment>

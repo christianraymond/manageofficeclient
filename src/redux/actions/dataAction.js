@@ -1,4 +1,12 @@
-import { SET_OFFICE, LOADING_DATA, DELETE_OFFICE, ADD_OFFICE, LOADING_UI, SET_ERRORS, CLEAR_ERRORS } from "../types";
+import {
+  SET_OFFICE,
+  LOADING_DATA,
+  DELETE_OFFICE,
+  ADD_OFFICE,
+  LOADING_UI,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+} from "../types";
 import axios from "axios";
 
 //Get all office
@@ -25,9 +33,7 @@ export const getOffices = () => (dispatch) => {
 //Delete Office action func
 export const deleteOffice = (officeId) => (dispatch) => {
   axios
-    .delete(
-      `/office/${officeId}`
-    )
+    .delete(`/office/${officeId}`)
     .then(() => {
       dispatch({ type: DELETE_OFFICE, payload: officeId });
     })
@@ -38,19 +44,20 @@ export const deleteOffice = (officeId) => (dispatch) => {
 export const addOffice = (newOffice) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
-    .post("https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office", newOffice)
+    .post('https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office', newOffice)
     .then((res) => {
       dispatch({
         type: ADD_OFFICE,
-        payload: res.data,
+        payload: res.data
       });
+      dispatch(
+        CLEAR_ERRORS
+      );
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       });
-      console.log("HTTP error", err)
-        dispatch({ type: CLEAR_ERRORS})
     });
 };

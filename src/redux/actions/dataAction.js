@@ -48,9 +48,9 @@ export const addOffice = (newOffice) => (dispatch) => {
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        // payload: err.response.data, //Unhandled Rejection (TypeError): Cannot read property 'data' of undefined => Response if beind undefined (:
-        payload: err.data,
+        payload: err.response.data,
       });
+      console.log("HTTP error", err)
         dispatch({ type: CLEAR_ERRORS})
     });
 };

@@ -68,10 +68,10 @@ export class OfficeProfile extends Component {
     let profileMarkup = !loading ? (
       <Paper>
         <Typography variant="body2" align="center">
-          In the future you will need to register before accessing this page!
+          In the future you will need to register before accessing office page!
         </Typography>
         <div className={classes.buttons}>
-          <Button
+          <Button disabled
             variant="contained"
             color="primary"
             component={Link}
@@ -79,7 +79,7 @@ export class OfficeProfile extends Component {
           >
             Login
           </Button>
-          <Button
+          <Button disabled
             variant="contained"
             color="secondary"
             component={Link}

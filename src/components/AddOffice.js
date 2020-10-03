@@ -11,6 +11,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Grid from "@material-ui/core/Grid";
 //Redux stuff
 import { connect } from "react-redux";
 import { addOffice } from "../redux/actions/dataAction";
@@ -18,25 +23,33 @@ import { addOffice } from "../redux/actions/dataAction";
 const styles = (theme) => ({
   ...theme.spreadThis,
   submitButton: {
-    position: 'relative',
+    justifyContent: "center",
+  },
+  button: {
+    display: "block",
+    marginTop: theme.spacing(2),
   },
   progressSpinner: {
-    padding: '60 5 10 5'
+    padding: "60 5 10 5",
   },
   closeButton: {
     position: "absolute",
     left: "91%",
     top: "3%",
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
 });
 class AddOffice extends Component {
   state = {
     open: false,
     officeName: "",
+    officeLocation: "",
     officeEmail: "",
     officeTellNumber: "",
-    officeLocation: "",
-    staffMaxOcupant: "",
+    officeMaxOcupant: "",
     officeColor: "",
     errors: {},
   };
@@ -53,7 +66,7 @@ class AddOffice extends Component {
         officeEmail: "",
         officeTellNumber: "",
         officeLocation: "",
-        staffMaxOcupant: "",
+        officeMaxOcupant: "",
         officeColor: "",
       });
       this.handleClose();
@@ -77,7 +90,8 @@ class AddOffice extends Component {
       officeEmail: this.state.officeEmail,
       officeTellNumber: this.state.officeTellNumber,
       officeLocation: this.state.officeLocation,
-      staffMaxOcupant: this.state.staffMaxOcupant,
+      officeMaxOcupant: this.state.officeMaxOcupant,
+      officeColor: this.state.officeColor,
     });
   };
   render() {
@@ -101,7 +115,9 @@ class AddOffice extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Add Office</DialogTitle>
+          <DialogTitle style={{ textAlign: "center", color: "slategray" }}>
+            Add Office
+          </DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField
@@ -111,79 +127,100 @@ class AddOffice extends Component {
                 multiline
                 row="3"
                 placeholder="Office name"
-                errors={errors.officeName ? true : false}
+                errors={errors.officeName ? true : undefined}
                 helperText={errors.officeName}
                 className={classes.TextField}
                 onChange={this.handleChange}
                 fullWidth
               />
-               <TextField
+              <TextField
                 name="officeEmail"
                 type="text"
                 label="Email Address"
                 multiline
                 row="3"
                 placeholder="Email Address"
-                errors={errors.officeEmail ? true : false}
+                errors={errors.officeEmail ? true : undefined}
                 helperText={errors.officeEmail}
                 className={classes.TextField}
                 onChange={this.handleChange}
                 fullWidth
               />
-               <TextField
+              <TextField
                 name="officeTellNumber"
                 type="text"
                 label="Email Address"
                 multiline
                 row="3"
                 placeholder="Office tell"
-                errors={errors.officeTellNumber ? true : false}
+                errors={errors.officeTellNumber ? true : undefined}
                 helperText={errors.officeTellNumber}
                 className={classes.TextField}
                 onChange={this.handleChange}
                 fullWidth
               />
-               <TextField
+              <TextField
                 name="officeLocation"
                 type="text"
                 label="Address"
                 multiline
                 row="3"
                 placeholder="Address"
-                errors={errors.officeLocation ? true : false}
+                errors={errors.officeLocation ? true : undefined}
                 helperText={errors.officeLocation}
                 className={classes.TextField}
                 onChange={this.handleChange}
                 fullWidth
               />
-               <TextField
-                name="staffMaxOcupant"
+              <TextField
+                name="officeMaxOcupant"
                 type="text"
                 label="Max number of occupants"
                 multiline
                 row="3"
                 placeholder="Address"
-                errors={errors.staffMaxOcupant ? true : false}
-                helperText={errors.staffMaxOcupant}
+                errors={errors.officeMaxOcupant ? true : undefined}
+                helperText={errors.officeMaxOcupant}
                 className={classes.TextField}
                 onChange={this.handleChange}
                 fullWidth
-              /><br/>
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                className={classes.submitButton}
-                disabled={loading}
-              >
-                Save Office
-                {loading && (
-                  <CircularProgress
-                    size={30}
-                    className={classes.progressSpinner}
-                  />
-                )}
-              </Button>
+              />
+              <FormControl className={classes.formControl}>
+                <InputLabel>Office color</InputLabel>
+                <Select onChange={this.handleChange} value={this.state.officeColor}>
+                  <MenuItem name="officeColor" value="Black">
+                    Black/
+                  </MenuItem>
+                  <MenuItem name="officeColor" value="Green">
+                    Green
+                  </MenuItem>
+                  <MenuItem name="officeColor" value="Maroon">
+                    Maroon
+                  </MenuItem>
+                  <MenuItem name="officeColor" value="Orange">
+                    Orange
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <Grid container justify="center">
+                <Grid item>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    className={classes.submitButton}
+                    disabled={loading}
+                  >
+                    Save Office
+                    {loading && (
+                      <CircularProgress
+                        size={30}
+                        className={classes.progressSpinner}
+                      />
+                    )}
+                  </Button>
+                </Grid>
+              </Grid>
             </form>
           </DialogContent>
         </Dialog>

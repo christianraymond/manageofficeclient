@@ -69,6 +69,7 @@ class AddOffice extends Component {
         officeMaxOcupant: "",
         officeColor: "",
       });
+      window.location.reload();
       this.handleClose();
     }
   }
@@ -76,7 +77,7 @@ class AddOffice extends Component {
     this.setState({ open: true });
   };
   handleClose = () => {
-    this.setState({ open: false, errors: {} }); //Clear out the error when dialog is closed.
+    this.setState({ open: false, errors: {} }); //Also clear out error when dialog is closed.
   };
   handleChange = (e) => {
     this.setState({
@@ -93,7 +94,8 @@ class AddOffice extends Component {
       officeMaxOcupant: this.state.officeMaxOcupant,
       officeColor: this.state.officeColor,
     });
-  };
+    this.setState({loading: true})
+  }
   render() {
     const { errors } = this.state;
     const { classes, UI, loading } = this.props;
@@ -189,7 +191,7 @@ class AddOffice extends Component {
                 <InputLabel>Office color</InputLabel>
                 <Select onChange={this.handleChange} value={this.state.officeColor}>
                   <MenuItem name="officeColor" value="Black">
-                    Black/
+                    Black 
                   </MenuItem>
                   <MenuItem name="officeColor" value="Green">
                     Green

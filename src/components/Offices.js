@@ -78,7 +78,7 @@ export class Offices extends Component {
               <Typography
                 variant="h6"
                 component={Link}
-                to={`/offices/${officeName}`}
+                to={`/offices/${officeId}`}
                 color="primary"
                 className={classes.officeName}
               >

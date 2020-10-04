@@ -8,15 +8,16 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
+import CircularProgress from '@material-ui/core/CircularProgress'
 //Redux stuff
 import { connect } from "react-redux";
-import { deleteOffice } from "../redux/actions/dataAction"
+import { deleteOffice } from "../redux/actions/dataAction";
 
 const styles = {
-    deleteButton:{
-        marginTop:"22px"
-    }
-}
+  deleteButton: {
+    marginTop: "22px",
+  },
+};
 
 class DeleteOffice extends Component {
   state = {
@@ -30,10 +31,10 @@ class DeleteOffice extends Component {
   };
   deleteOffice = () => {
     this.props.deleteOffice(this.props.officeId);
-    this.setState({ oepn: false });
+    this.setState({open: false})
   };
   render() {
-    const { classes } = this.props;
+    const { classes, loading } = this.props;
     return (
       <Fragment>
         <MyButton
@@ -41,7 +42,7 @@ class DeleteOffice extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
-         <DeleteOutline color="secondary"/>   
+          <DeleteOutline color="secondary" />
         </MyButton>
         <Dialog
           open={this.state.open}
@@ -50,8 +51,11 @@ class DeleteOffice extends Component {
           maxWidth="sm"
         >
           <DialogTitle>
-          <span><h1>Remove office</h1></span>
-           Are you sure you want to <span style={{color:'red'}}>remove</span> this office ?
+            <span>
+              <h1>Remove office</h1>
+            </span>
+            Are you sure you want to{" "}
+            <span style={{ color: "red" }}>remove</span> {this.props.officeId} ?
           </DialogTitle>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
@@ -59,6 +63,12 @@ class DeleteOffice extends Component {
             </Button>
             <Button onClick={this.deleteOffice} color="secondary">
               Remove
+              {loading && (
+                <CircularProgress
+                  size={30}
+                  className={classes.progressSpinner}
+                />
+              )}
             </Button>
           </DialogActions>
         </Dialog>
@@ -67,12 +77,12 @@ class DeleteOffice extends Component {
   }
 }
 
-
 DeleteOffice.prototypes = {
-    deleteOffice: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
-    officeId: PropTypes.string.isRequired
-  }
+  deleteOffice: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
+  officeId: PropTypes.string.isRequired,
+};
 
-
-export default connect(null, { deleteOffice})(withStyles(styles)(DeleteOffice))
+export default connect(null, { deleteOffice })(
+  withStyles(styles)(DeleteOffice)
+);

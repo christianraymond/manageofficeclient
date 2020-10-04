@@ -36,6 +36,7 @@ export const deleteOffice = (officeId) => (dispatch) => {
     .delete(`/office/${officeId}`)
     .then(() => {
       dispatch({ type: DELETE_OFFICE, payload: officeId });
+      window.location.reload()
     })
     .catch((err) => console.log(err));
 };
@@ -44,20 +45,19 @@ export const deleteOffice = (officeId) => (dispatch) => {
 export const addOffice = (newOffice) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
-    .post('https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office', newOffice)
+    .post(
+      "https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office", newOffice)
     .then((res) => {
       dispatch({
         type: ADD_OFFICE,
-        payload: res.data
+        payload: res.data,
       });
-      dispatch(
-        CLEAR_ERRORS
-      );
+      dispatch(CLEAR_ERRORS);
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data
+        payload: err.data,
       });
     });
 };

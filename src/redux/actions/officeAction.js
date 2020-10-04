@@ -41,24 +41,22 @@ export const getOfficeData = () => (dispatch) => {
 export const editOfficeDetails = (officeDetails, id) => (dispatch) => {
   dispatch({ type: LOADING_OFFICE });
   axios
-    .post('/office', officeDetails)
+    .post("https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office", officeDetails)
     .then(() => {
       dispatch(getOfficeData());
     })
-    .catch(err => {
-      console.log(err)
-      if(!err.response){
+    .catch((err) => {
+      console.log(err);
+      if (!err.response) {
         //network error
-        err.message = 'Erro: Netword';
+        err.message = "Erro: Netword";
         console.log(err.message);
-      } else if(err.code === "ENCONSBORTED"){
-          console.log("Timout")
-      }else{
-        err.message = err.message;
+      } else if (err.code === "ENCONSBORTED") {
+        console.log("Timout");
       }
       dispatch({
         type: SET_ERRORS,
-        payload: err.message
-      })
+        payload: err.message,
+      });
     });
 };

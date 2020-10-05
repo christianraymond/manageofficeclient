@@ -3,7 +3,7 @@ import { SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_AUTHENTICATED, SET_
 
 const initialState = { 
     authenticated: false,
-    credentials: {},
+    officeDetails: {},
 };
 
 export default function(state = initialState, action){

@@ -3,8 +3,8 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-import Offices from '../components/Offices';
-import OfficeProfile from '../components/OfficeProfile'
+import Offices from '../components/officeProfile/Offices';
+import OfficeProfile from '../components/office/OfficeProfile'
 
 class Home extends Component {
   state = {
@@ -44,14 +44,14 @@ class Home extends Component {
 export default Home;
 
 
-//Redux implimentation not rendering OFFICES. Bug to fix later. 
+//Redux implimentation not renderin(loading) OFFICES from the DB. Bug to fix later. 
 
 // import React, { Component } from "react";
 // import Grid from "@material-ui/core/Grid";
 // import CircularProgress from "@material-ui/core/CircularProgress";
 // import PropTypes from "prop-types";
-// import Offices from "../components/Offices";
-// import OfficeProfile from "../components/OfficeProfile";
+// import Offices from '../components/officeProfile/Offices';
+// import OfficeProfile from "../components/office/OfficeProfile";
 // //Redux stuff
 // import { connect } from "react-redux";
 // import { getOffices } from "../redux/actions/dataAction";
@@ -62,18 +62,17 @@ export default Home;
 //   }
 //   render() {
 //     const { offices, loading } = this.props.data;
-//     let recentOfficesMarkup = loading ? (
+//     let recentOfficesMarkup = !loading ? (
 //       offices.map((office) => <Offices key={office.officeId} office={office} />)
 //     ) : (
-//       <CircularProgress size={50} color="secondary" />
+//       <CircularProgress size={30} color="primary" />
 //     );
 //     return (
-//       <Grid container spacing={4}>
-//         <Grid item sm={8} xm={12}>
+//       <Grid container spacing={10}>
+//         <Grid item sm={8} xs={12}>
 //           {recentOfficesMarkup}
-//           {console.log('Hello', recentOfficesMarkup)}
 //         </Grid>
-//         <Grid item sm={4} xm={12}>
+//         <Grid item sm={4} xs={12}>
 //           <OfficeProfile />
 //         </Grid>
 //       </Grid>

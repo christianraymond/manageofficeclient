@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from "react";
-import AddOffice from './AddOffice';
+import AddOffice from '../officeProfile/AddOffice';
 import { Link } from "react-router-dom";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 //MUI stuff
 import AppBar from "@material-ui/core/AppBar";
 import Tolbar from "@material-ui/core/Toolbar";
 import { Button } from "@material-ui/core";
 //Icons
 import HomeIcon from "@material-ui/icons/Home";
+import { OfficeView } from "../officeProfile/OfficeView";
 
 class Navbar extends Component {
   render() {

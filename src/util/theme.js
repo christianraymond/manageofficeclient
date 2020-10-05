@@ -67,5 +67,10 @@ export default{
           fontSize: 10,
           marginTop: '0.3rem',
         },
+        visibleSeparator:{
+          width:'100%',
+          borderBotton: '1px solid rgba(0,0,0,0.1)',
+          marginBottom: 20,
+        }
       }
 }

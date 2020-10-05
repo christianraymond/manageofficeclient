@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import withStyles from "@material-ui/styles/withStyles";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 //Mui stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -18,7 +18,7 @@ import Select from "@material-ui/core/Select";
 import Grid from "@material-ui/core/Grid";
 //Redux stuff
 import { connect } from "react-redux";
-import { addOffice } from "../redux/actions/dataAction";
+import { addOffice } from "../../redux/actions/dataAction";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -41,6 +41,10 @@ const styles = (theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  textField:{
+    margin: '8px 5px 10px',
+    padding: '5px 0 20px',
+  }
 });
 class AddOffice extends Component {
   state = {
@@ -68,6 +72,7 @@ class AddOffice extends Component {
         officeLocation: "",
         officeMaxOcupant: "",
         officeColor: "",
+
       });
       window.location.reload();
       this.handleClose();
@@ -77,7 +82,7 @@ class AddOffice extends Component {
     this.setState({ open: true });
   };
   handleClose = () => {
-    this.setState({ open: false, errors: {} }); //Also clear out error when dialog is closed.
+    this.setState({ open: false });
   };
   handleChange = (e) => {
     this.setState({
@@ -117,23 +122,26 @@ class AddOffice extends Component {
           >
             <CloseIcon />
           </MyButton>
+
+          <div className={classes.centeredForm}>
           <DialogTitle style={{ textAlign: "center", color: "slategray" }}>
             Add Office
           </DialogTitle>
-          <DialogContent>
+          <DialogContent className={classes.dialogContent}>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="officeName"
                 type="text"
-                label="Office"
+                label="Office Name"
                 multiline
                 row="3"
-                placeholder="Office name"
+                placeholder="Office Name"
                 errors={errors.officeName ? true : undefined}
                 helperText={errors.officeName}
-                className={classes.TextField}
+                className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
+                required
               />
               <TextField
                 name="officeEmail"
@@ -144,35 +152,38 @@ class AddOffice extends Component {
                 placeholder="Email Address"
                 errors={errors.officeEmail ? true : undefined}
                 helperText={errors.officeEmail}
-                className={classes.TextField}
+                className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
+                required
               />
               <TextField
                 name="officeTellNumber"
                 type="text"
-                label="Email Address"
+                label="Office Tell"
                 multiline
                 row="3"
-                placeholder="Office tell"
+                placeholder="Office Tell"
                 errors={errors.officeTellNumber ? true : undefined}
                 helperText={errors.officeTellNumber}
-                className={classes.TextField}
+                className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
+                required
               />
               <TextField
                 name="officeLocation"
                 type="text"
-                label="Address"
+                label="Office Address"
                 multiline
                 row="3"
-                placeholder="Address"
+                placeholder="Office Address"
                 errors={errors.officeLocation ? true : undefined}
                 helperText={errors.officeLocation}
-                className={classes.TextField}
+                className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
+                required  
               />
               <TextField
                 name="officeMaxOcupant"
@@ -180,12 +191,13 @@ class AddOffice extends Component {
                 label="Max number of occupants"
                 multiline
                 row="3"
-                placeholder="Address"
+                placeholder="Max number of occupants"
                 errors={errors.officeMaxOcupant ? true : undefined}
                 helperText={errors.officeMaxOcupant}
-                className={classes.TextField}
+                className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth
+                required
               />
               <FormControl className={classes.formControl}>
                 <InputLabel>Office color</InputLabel>
@@ -225,6 +237,7 @@ class AddOffice extends Component {
               </Grid>
             </form>
           </DialogContent>
+          </div>
         </Dialog>
       </Fragment>
     );

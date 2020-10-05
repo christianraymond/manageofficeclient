@@ -20,6 +20,11 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
+    case SET_OFFICE:
+      return {
+        ...state,
+        office: action.payload
+      }
     case SET_OFFICES:
       return {
         ...state,

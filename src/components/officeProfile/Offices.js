@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
-import EditOffice from './EditOffice';
-import DeleteOffice from './DeleteOffice';
+import PropTypes from "prop-types";
+import EditOffice from "../office/EditOffice";
+import DeleteOffice from "../officeProfile/DeleteOffice";
+import OfficeView from "../officeProfile/OfficeView";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaPhoneSquare } from "react-icons/fa";
@@ -17,24 +18,30 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = {
   card: {
-    position: 'relative',
+    position: "relative",
     display: "flex",
     marginBottom: 20,
     height: 150,
   },
   imageStyle: {
     minWidth: 50,
-    objectFit: "cover",
-    fontSize: 50,
-    backgroundColor: "DarkCyan",
+    backgroundColor:"MediumTurquoise",
     width: "10%",
-
+    fontSize: 50,
     height: 150,
     borderRadius: "4px 0 0 4px",
     color: "white",
     flexFlow: "column",
     alignItems: "center",
     justifyContent: "space-around",
+  },
+  officeMember:{
+    position: 'absolute',
+    bottom: '10%',
+    top: '100px',
+    left: '4px',
+    color: "white",
+    fontSize: 15,
   },
   content: {
     padding: 25,
@@ -62,6 +69,7 @@ export class Offices extends Component {
         officeTellNumber,
         officeMaxOcupant,
         officeId,
+        staffsMember
       },
     } = this.props;
     return (
@@ -71,14 +79,14 @@ export class Offices extends Component {
             <FaUserFriends className={classes.imageStyle} />
           </Grid>
           <Grid item xm={1}>
-          <Typography>07/{officeMaxOcupant}</Typography>
+            <Typography className={classes.officeMember}>07/{officeMaxOcupant}</Typography>
           </Grid>
           <Grid item xs={4}>
             <CardContent className={classes.content}>
               <Typography
                 variant="h6"
                 component={Link}
-                to={`/offices/${officeId}`}
+                to={`/office`}
                 color="primary"
                 className={classes.officeName}
               >
@@ -98,9 +106,12 @@ export class Offices extends Component {
                 <FaUserFriends /> {officeMaxOcupant}
               </Typography>
             </CardContent>
+            <Grid item sm={1}>
+              <OfficeView officeId={officeId} />
+            </Grid>
           </Grid>
-          <Grid item xs={1} style={{marginLeft:"352px"}}>
-            <EditOffice/>
+          <Grid item xs={1} style={{ marginLeft: "352px" }}>
+            <EditOffice />
           </Grid>
           <Grid item xs={1}>
             <DeleteOffice officeId={officeId} />
@@ -113,7 +124,7 @@ export class Offices extends Component {
 
 Offices.prototypes = {
   office: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
-}
+  classes: PropTypes.object.isRequired,
+};
 
-export default (withStyles(styles)(Offices));
+export default withStyles(styles)(Offices);

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import withStyles from "@material-ui/styles/withStyles";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 //Mui stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -15,7 +15,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import CloseIcon from "@material-ui/icons/Close";
 //Redux stuff
 import { connect } from "react-redux";
-import { editOfficeDetails } from "../redux/actions/officeAction";
+import { editOfficeDetails } from "../../redux/actions/dataAction";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -23,6 +23,10 @@ const styles = (theme) => ({
     position: "absolute",
     left: "90%",
     top: "3%",
+  },
+  textField:{
+    margin: '8px 5px 10px',
+    padding: '5px 0 20px',
   }
 });
 
@@ -109,7 +113,7 @@ export class EditOffice extends Component {
                 label="Office Name"
                 rows="3"
                 placeholder="office name"
-                className={classes.TextField}
+                className={classes.textField}
                 value={this.state.officename}
                 fullWidth
                 onChange={this.handleChange}
@@ -120,7 +124,7 @@ export class EditOffice extends Component {
                 label="Office Email"
                 rows="3"
                 placeholder="office Email"
-                className={classes.TextField}
+                className={classes.textField}
                 value={this.state.officeEmail}
                 fullWidth
                 onChange={this.handleChange}
@@ -131,7 +135,7 @@ export class EditOffice extends Component {
                 label="Office Tell"
                 rows="3"
                 placeholder="office Tell"
-                className={classes.TextField}
+                className={classes.textField}
                 value={this.state.officeTell}
                 fullWidth
                 onChange={this.handleChange}
@@ -142,7 +146,7 @@ export class EditOffice extends Component {
                 label="Office Address"
                 rows="3"
                 placeholder="office Address"
-                className={classes.TextField}
+                className={classes.textField}
                 value={this.state.officeAddress}
                 fullWidth
                 onChange={this.handleChange}
@@ -153,7 +157,7 @@ export class EditOffice extends Component {
                 label="Max number of occupants"
                 rows="3"
                 placeholder="Max number of occupants"
-                className={classes.TextField}
+                className={classes.textField}
                 value={this.state.officeMaxOcupant}
                 fullWidth
                 onChange={this.handleChange}

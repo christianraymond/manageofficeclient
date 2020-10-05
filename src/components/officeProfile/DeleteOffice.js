@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 //MUI stuff
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -11,7 +11,7 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import CircularProgress from '@material-ui/core/CircularProgress'
 //Redux stuff
 import { connect } from "react-redux";
-import { deleteOffice } from "../redux/actions/dataAction";
+import { deleteOffice } from "../../redux/actions/dataAction";
 
 const styles = {
   deleteButton: {
@@ -55,7 +55,7 @@ class DeleteOffice extends Component {
               <h1>Remove office</h1>
             </span>
             Are you sure you want to{" "}
-            <span style={{ color: "red" }}>remove</span> {this.props.officeId} ?
+            <span style={{ color: "red" }}>remove</span> this office ?
           </DialogTitle>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

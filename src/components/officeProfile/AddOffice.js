@@ -10,11 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AddIcon from "@material-ui/icons/Add";
-import CloseIcon from "@material-ui/icons/Close";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import CloseIcon from "@material-ui/icons/Close"
 import Grid from "@material-ui/core/Grid";
 //Redux stuff
 import { connect } from "react-redux";
@@ -41,10 +37,10 @@ const styles = (theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  textField:{
-    margin: '8px 5px 10px',
-    padding: '5px 0 20px',
-  }
+  textField: {
+    margin: "8px 5px 10px",
+    padding: "5px 0 20px",
+  },
 });
 class AddOffice extends Component {
   state = {
@@ -56,6 +52,7 @@ class AddOffice extends Component {
     officeMaxOcupant: "",
     officeColor: "",
     errors: {},
+    select: "select",
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -72,9 +69,7 @@ class AddOffice extends Component {
         officeLocation: "",
         officeMaxOcupant: "",
         officeColor: "",
-
       });
-      window.location.reload();
       this.handleClose();
     }
   }
@@ -99,11 +94,17 @@ class AddOffice extends Component {
       officeMaxOcupant: this.state.officeMaxOcupant,
       officeColor: this.state.officeColor,
     });
-    this.setState({loading: true})
-  }
+    this.setState({ loading: true });
+  };
   render() {
     const { errors } = this.state;
     const { classes, UI, loading } = this.props;
+    const options = [
+      "Black",
+      "Orange",
+      "Blue",
+      "White",
+    ];
     return (
       <Fragment>
         <MyButton onClick={this.handleOpen} tip="Create a new office">
@@ -124,119 +125,116 @@ class AddOffice extends Component {
           </MyButton>
 
           <div className={classes.centeredForm}>
-          <DialogTitle style={{ textAlign: "center", color: "slategray" }}>
-            Add Office
-          </DialogTitle>
-          <DialogContent className={classes.dialogContent}>
-            <form onSubmit={this.handleSubmit}>
-              <TextField
-                name="officeName"
-                type="text"
-                label="Office Name"
-                multiline
-                row="3"
-                placeholder="Office Name"
-                errors={errors.officeName ? true : undefined}
-                helperText={errors.officeName}
-                className={classes.textField}
-                onChange={this.handleChange}
-                fullWidth
-                required
-              />
-              <TextField
-                name="officeEmail"
-                type="text"
-                label="Email Address"
-                multiline
-                row="3"
-                placeholder="Email Address"
-                errors={errors.officeEmail ? true : undefined}
-                helperText={errors.officeEmail}
-                className={classes.textField}
-                onChange={this.handleChange}
-                fullWidth
-                required
-              />
-              <TextField
-                name="officeTellNumber"
-                type="text"
-                label="Office Tell"
-                multiline
-                row="3"
-                placeholder="Office Tell"
-                errors={errors.officeTellNumber ? true : undefined}
-                helperText={errors.officeTellNumber}
-                className={classes.textField}
-                onChange={this.handleChange}
-                fullWidth
-                required
-              />
-              <TextField
-                name="officeLocation"
-                type="text"
-                label="Office Address"
-                multiline
-                row="3"
-                placeholder="Office Address"
-                errors={errors.officeLocation ? true : undefined}
-                helperText={errors.officeLocation}
-                className={classes.textField}
-                onChange={this.handleChange}
-                fullWidth
-                required  
-              />
-              <TextField
-                name="officeMaxOcupant"
-                type="text"
-                label="Max number of occupants"
-                multiline
-                row="3"
-                placeholder="Max number of occupants"
-                errors={errors.officeMaxOcupant ? true : undefined}
-                helperText={errors.officeMaxOcupant}
-                className={classes.textField}
-                onChange={this.handleChange}
-                fullWidth
-                required
-              />
-              <FormControl className={classes.formControl}>
-                <InputLabel>Office color</InputLabel>
-                <Select onChange={this.handleChange} value={this.state.officeColor}>
-                  <MenuItem name="officeColor" value="Black">
-                    Black 
-                  </MenuItem>
-                  <MenuItem name="officeColor" value="Green">
-                    Green
-                  </MenuItem>
-                  <MenuItem name="officeColor" value="Maroon">
-                    Maroon
-                  </MenuItem>
-                  <MenuItem name="officeColor" value="Orange">
-                    Orange
-                  </MenuItem>
-                </Select>
-              </FormControl>
-              <Grid container justify="center">
-                <Grid item>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    className={classes.submitButton}
-                    disabled={loading}
+            <DialogTitle style={{ textAlign: "center", color: "slategray" }}>
+              Add Office
+            </DialogTitle>
+            <DialogContent className={classes.dialogContent}>
+              <form onSubmit={this.handleSubmit}>
+                <TextField
+                  name="officeName"
+                  type="text"
+                  label="Office Name"
+                  multiline
+                  row="3"
+                  placeholder="Office Name"
+                  errors={errors.officeName ? true : undefined}
+                  helperText={errors.officeName}
+                  className={classes.textField}
+                  onChange={this.handleChange}
+                  fullWidth
+                  required
+                />
+                <TextField
+                  name="officeEmail"
+                  type="text"
+                  label="Email Address"
+                  multiline
+                  row="3"
+                  placeholder="Email Address"
+                  errors={errors.officeEmail ? true : undefined}
+                  helperText={errors.officeEmail}
+                  className={classes.textField}
+                  onChange={this.handleChange}
+                  fullWidth
+                  required
+                />
+                <TextField
+                  name="officeTellNumber"
+                  type="text"
+                  label="Office Tell"
+                  multiline
+                  row="3"
+                  placeholder="Office Tell"
+                  errors={errors.officeTellNumber ? true : undefined}
+                  helperText={errors.officeTellNumber}
+                  className={classes.textField}
+                  onChange={this.handleChange}
+                  fullWidth
+                  required
+                />
+                <TextField
+                  name="officeLocation"
+                  type="text"
+                  label="Office Address"
+                  multiline
+                  row="3"
+                  placeholder="Office Address"
+                  errors={errors.officeLocation ? true : undefined}
+                  helperText={errors.officeLocation}
+                  className={classes.textField}
+                  onChange={this.handleChange}
+                  fullWidth
+                  required
+                />
+                <TextField
+                  name="officeMaxOcupant"
+                  type="text"
+                  label="Max number of occupants"
+                  multiline
+                  row="3"
+                  placeholder="Max number of occupants"
+                  errors={errors.officeMaxOcupant ? true : undefined}
+                  helperText={errors.officeMaxOcupant}
+                  className={classes.textField}
+                  onChange={this.handleChange}
+                  fullWidth
+                  required
+                />
+                
+                  <label htmlFor="officeColor">Office color</label>
+                  <select
+                    value={this.state.value}
+                    // onChange={this.handleClose}
                   >
-                    Save Office
-                    {loading && (
-                      <CircularProgress
-                        size={30}
-                        className={classes.progressSpinner}
-                      />
-                    )}
-                  </Button>
+                    {options.map((option) => {
+                      return (
+                        <option value={option} key={option}>
+                          {option}
+                        </option>
+                      );
+                    })}
+                  </select>
+                <Grid container justify="center">
+                  <Grid item>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      className={classes.submitButton}
+                      disabled={loading}
+                    >
+                      Save Office
+                      {loading && (
+                        <CircularProgress
+                          size={30}
+                          className={classes.progressSpinner}
+                        />
+                      )}
+                    </Button>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </form>
-          </DialogContent>
+              </form>
+            </DialogContent>
           </div>
         </Dialog>
       </Fragment>

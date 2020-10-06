@@ -1,43 +1,51 @@
 import React, { Component, Fragment } from "react";
+import AddStaff from "./AddStaff";
 import withStyles from "@material-ui/styles/withStyles";
-import submitStaff from "../../redux/actions/dataAction";
 import PropTypes from "prop-types";
 
 //MUI stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+//Icons
+import PersonIcon from "@material-ui/icons/Person";
+import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
+
+  staffIcons: {
+    color: "white",
+    backgroundColor: "MediumTurquoise",
+  },
 });
-class Staff extends Component {
-  stuffsMember = () => {
-    if (
-      this.props.officeName.staffsMember &&
-      this.props.officeName.staffsMember.find(
-        (staffsMember) => staffsMember.officeId === this.props.office.officeId
-      )
-    )
-      return true;
-    else return false;
-  };
+class Staffs extends Component {
   render() {
-    const { staffsMember, classes } = this.props;
+    const { staffs, classes } = this.props;
     return (
       <Grid container>
-        {staffsMember.map((staff) => {
-          const { officeName } = staff;
+        <AddStaff  />
+        <hr className={classes.visibleSeparator} />
+        {staffs.map((staff, index) => {
+          console.log(staffs);
           return (
-            <Fragment key={officeName}>
-              <Grid item sm>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  className={classes.staffList}
-                >
-                  {officeName}
-                </Typography>
+            <Fragment key={index}>
+              <Grid item sm={12}>
+                <Grid container>
+                  <Grid item sm={1}>
+                    <PersonIcon className={classes.staffIcons} />
+                  </Grid>
+                  <Grid item sm={10}>
+                    <Typography variant="body1">{staff.staffName}</Typography>
+                  </Grid>
+                  <Grid item sm={1}>
+                    <MoreVertOutlinedIcon className={classes.addEtedIcon} />
+                  </Grid>
+                </Grid>
               </Grid>
+              {index !== staffs.length - 1 && (
+                <hr className={classes.visibleSeparator} /> //Show rulerLine unless it's the last index
+              )}
             </Fragment>
           );
         })}
@@ -45,4 +53,9 @@ class Staff extends Component {
     );
   }
 }
-export default withStyles(styles)(Staff);
+
+Staffs.propTypes = {
+  staffs: PropTypes.array.isRequired,
+};
+
+export default withStyles(styles)(Staffs);

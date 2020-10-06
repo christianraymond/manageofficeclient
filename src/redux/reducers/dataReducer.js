@@ -31,11 +31,6 @@ export default function(state = initialState, action) {
         offices: action.payload,
         loading: false
       };
-    case SET_OFFICE:
-      return {
-        ...state,
-        office: action.payload
-      };
     case DELETE_OFFICE:
       let index = state.offices.findIndex(
         (office) => office.officeId === action.payload.officeId

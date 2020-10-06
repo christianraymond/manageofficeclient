@@ -16,6 +16,6 @@ export const SET_OFFICES = 'SET_OFFICE';
 export const DELETE_OFFICE = 'DELETE_OFFICE';
 export const ADD_OFFICE = 'ADD_OFFICE';
 export const STOP_LOADING_UI = 'STOP_LOADING_UI';
-export const SUBMIT_STAFF = 'SUBMIT_STAFF'
+export const ADD_STAFF = 'ADD_STAFF'
 
 

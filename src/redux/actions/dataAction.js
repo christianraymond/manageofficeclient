@@ -8,6 +8,7 @@ import {
   CLEAR_ERRORS,
   STOP_LOADING_UI,
   LOADING_OFFICE,
+  ADD_STAFF,
 } from "../types";
 import axios from "axios";
 
@@ -44,6 +45,7 @@ export const addOffice = (newOffice) => (dispatch) => {
         type: ADD_OFFICE,
         payload: res.data,
       });
+      window.location.reload();
       dispatch(CLEAR_ERRORS);
     })
     .catch((err) => {
@@ -53,11 +55,32 @@ export const addOffice = (newOffice) => (dispatch) => {
       });
     });
 };
+//ADD NEW STAFF MEMEBER
+export const addStaff = (officeId, staffData) => (dispatch) => {
+  axios.post(`https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office/${officeId}/staff`, staffData)
+  .then((res) => {
+    dispatch({
+      type: ADD_STAFF,
+      payload: res.data,
+    });
+    dispatch({
+      type: CLEAR_ERRORS,
+    }).catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.data,
+      });
+    });
+  });
+};
 //Edit office
 export const editOfficeDetails = (officeDetails, id) => (dispatch) => {
   dispatch({ type: LOADING_OFFICE });
   axios
-    .post("https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office", officeDetails)
+    .post(
+      "https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office",
+      officeDetails
+    )
     .then(() => {
       dispatch(getOffices());
     })
@@ -91,7 +114,7 @@ export const deleteOffice = (officeId) => (dispatch) => {
 export const viewOffice = (officeId) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
-    .get(`https://us-central1-manageofficeproj-23044.cloudfunctions.net/api/office/${officeId}`)
+    .get(`/office/${officeId}`)
     .then((res) => {
       dispatch({
         type: SET_OFFICE,
@@ -103,5 +126,3 @@ export const viewOffice = (officeId) => (dispatch) => {
       console.log(err);
     });
 };
-
-

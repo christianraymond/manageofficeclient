@@ -71,6 +71,10 @@ export default{
           width:'100%',
           borderBotton: '1px solid rgba(0,0,0,0.1)',
           marginBottom: 20,
-        }
+        },
+        invisibleSeparator: {
+          border: "none",
+          margin: 4,
+        },
       }
 }

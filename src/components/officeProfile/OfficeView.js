@@ -20,11 +20,6 @@ import { viewOffice } from "../../redux/actions/dataAction";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
-
-  invisibleSeparator: {
-    border: "none",
-    margin: 4,
-  },
   officeIamge: {
     maxWidth: 200,
     height: 200,
@@ -47,12 +42,12 @@ const styles = (theme) => ({
 
 export class OfficeView extends Component {
   state = {
-    open: false,
+    open: false
   };
 
   handleOpen = () => {
     this.setState({ open: true});
-    this.props.viewOffice(this.props.officeId);
+    this.props.viewOffice(this.props.officeId); //Send the request to the server to get theh specified office
   };
   handleClose = () => {
     this.setState({ open: false });
@@ -66,8 +61,7 @@ export class OfficeView extends Component {
         officeEmail,
         officeTellNumber,
         officeMaxOcupant,
-        staffsMember,
-        staffs,
+        staffs
       },
       UI: { loading },
     } = this.props;
@@ -90,7 +84,7 @@ export class OfficeView extends Component {
             variant="h6"
             to={`/offices/${officeName}`}
           >
-            @{officeName}
+          {officeName}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1" color="textSecondary">
@@ -106,8 +100,8 @@ export class OfficeView extends Component {
             Max Capacity: {officeMaxOcupant}
           </Typography>
         </Grid>
-        {/* <hr className={classes.invisibleSeparator}/>
-        <Staffs staffsMember={staffsMember}/> */}
+        <hr className={classes.invisibleSeparator}/>
+        <Staffs staffs={staffs}/>
       </Grid>
     );
     return (

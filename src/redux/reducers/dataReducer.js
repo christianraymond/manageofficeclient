@@ -5,6 +5,7 @@ import {
   DELETE_OFFICE,
   ADD_OFFICE,
   SET_OFFICE,
+  ADD_STAFF
 } from '../types';
 
 const initialState = {
@@ -46,6 +47,14 @@ export default function(state = initialState, action) {
         offices: [action.payload, ...state.offices],
         loading: true
       };
+     case ADD_STAFF:
+       return {
+         ...state,
+         office: {
+           ...state.office,
+           staffs: [action.payload, ...state.office.staffs]
+         }
+       }
     default:
       return state;
   }

@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from "react";
-import AddStaff from "./AddStaff";
 import withStyles from "@material-ui/styles/withStyles";
 import PropTypes from "prop-types";
 
 //MUI stuff
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 //Icons
 import PersonIcon from "@material-ui/icons/Person";
 import MoreVertOutlinedIcon from "@material-ui/icons/MoreVertOutlined";
@@ -24,7 +22,6 @@ class Staffs extends Component {
     const { staffs, classes } = this.props;
     return (
       <Grid container>
-        <AddStaff  />
         <hr className={classes.visibleSeparator} />
         {staffs.map((staff, index) => {
           console.log(staffs);

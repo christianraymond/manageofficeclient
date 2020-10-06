@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MyButton from "../../util/MyButton";
 import withStyles from "@material-ui/styles/withStyles";
-
+import PropTypes from "prop-types";
 //MUI stuff
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,9 +10,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from '@material-ui/core/Typography'
+import Typography from "@material-ui/core/Typography";
 //Icons
 import CloseIcon from "@material-ui/icons/Close";
+//Redux stuff
+import { connect } from "react-redux";
+import { addStaff } from "../../redux/actions/dataAction";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -26,9 +29,17 @@ const styles = (theme) => ({
 export class AddStaff extends Component {
   state = {
     open: false,
+    errors: {},
     firstName: "",
-    lastName: "",
+    lastName: ""
   };
+
+  //Handle errors
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -43,13 +54,14 @@ export class AddStaff extends Component {
   };
   hanldeSubmit = (e) => {
     e.preventDefault();
-    this.props.addStaff({
+    this.props.addStaff(this.props.officeId, {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
     });
   };
   render() {
     const { classes, loading } = this.props;
+    const errors = this.state.errors;
     return (
       <Grid container>
         <Grid item sm={4}>
@@ -86,10 +98,11 @@ export class AddStaff extends Component {
                 name="firstName"
                 label="First Name"
                 type="text"
-                onChange={this.handleChange}
-                className={classes.textField}
                 required
                 fullWidth
+                className={classes.textField}
+                value={this.state.firstName}
+                onChange={this.handleChange}
               />
               <TextField
                 autoFocus
@@ -97,10 +110,11 @@ export class AddStaff extends Component {
                 name="lastName"
                 label="Last Name"
                 type="text"
-                onChange={this.handleChange}
-                className={classes.textField}
                 required
                 fullWidth
+                className={classes.textField}
+                value={this.state.lastName}
+                onChange={this.handleChange}
               />
               <Grid container justify="center">
                 <Grid item>
@@ -122,6 +136,7 @@ export class AddStaff extends Component {
                 </Grid>
               </Grid>
             </form>
+            <hr className={classes.visibleSeparator} />
           </DialogContent>
         </Dialog>
       </Grid>
@@ -129,4 +144,17 @@ export class AddStaff extends Component {
   }
 }
 
-export default withStyles(styles)(AddStaff);
+AddStaff.propTypes = {
+  addStaff: PropTypes.func.isRequired,
+  UI: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  officeId: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  UI: state.UI,
+});
+
+export default connect(mapStateToProps, { addStaff })(
+  withStyles(styles)(AddStaff)
+);

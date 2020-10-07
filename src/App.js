@@ -15,7 +15,6 @@ import { logoutUser, getUserData } from './redux/actions/userAtion'
 import Navbar from "./components/layout/Navbar";
 //Pages
 import home from "./pages/home";
-import office from './pages/viewOfficeDetails';
 import login from "./pages/login";
 import signup from "./pages/signup";
 import Authenticated from "./util/Authenticated";

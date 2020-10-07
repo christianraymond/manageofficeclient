@@ -8,7 +8,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from "@material-ui/core/CircularProgress";
 //Redux stuff
 import { connect } from "react-redux";
 import { deleteOffice } from "../../redux/actions/dataAction";
@@ -31,7 +31,7 @@ class DeleteOffice extends Component {
   };
   deleteOffice = () => {
     this.props.deleteOffice(this.props.officeId);
-    this.setState({open: false})
+    this.setState({ open: false });
   };
   render() {
     const { classes, loading } = this.props;

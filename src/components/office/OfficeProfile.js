@@ -10,7 +10,8 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 //Icons
 import IconButton from "@material-ui/core/IconButton";
-import Tooltip from '@material-ui/core/Tooltip'
+import Tooltip from '@material-ui/core/Tooltip';
+import WarningIcon from '@material-ui/icons/Warning';
 //Redux staff
 import { connect } from "react-redux";
 
@@ -69,6 +70,7 @@ export class OfficeProfile extends Component {
       <Paper>
         <Typography variant="body2" align="center">
           In the future you will need to register before accessing office page!
+          {/* <WarningIcon/> */}
         </Typography>
         <div className={classes.buttons}>
           <Button disabled

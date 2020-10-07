@@ -43,17 +43,16 @@ const styles = (theme) => ({
 
 export class OfficeView extends Component {
   state = {
-    open: false
+    open: false,
   };
 
   handleOpen = () => {
-    this.setState({ open: true});
+    this.setState({ open: true });
     this.props.viewOffice(this.props.officeId); //Send the request to the server to get theh specified office
   };
   handleClose = () => {
     this.setState({ open: false });
     this.props.clearErrors();
-
   };
   render() {
     const {
@@ -65,7 +64,7 @@ export class OfficeView extends Component {
         officeTellNumber,
         officeMaxOcupant,
         officeId,
-        staffs
+        staffs,
       },
       UI: { loading },
     } = this.props;
@@ -88,7 +87,7 @@ export class OfficeView extends Component {
             variant="h6"
             to={`/offices/${officeName}`}
           >
-          {officeName}
+            {officeName}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1" color="textSecondary">
@@ -104,9 +103,9 @@ export class OfficeView extends Component {
             Max Capacity: {officeMaxOcupant}
           </Typography>
         </Grid>
-        <hr className={classes.invisibleSeparator}/>
-        <AddStaff officeId={officeId}/>
-        <Staffs staffs={staffs}/>
+        <hr className={classes.invisibleSeparator} />
+        <AddStaff officeId={officeId} />
+        <Staffs staffs={staffs} />
       </Grid>
     );
     return (

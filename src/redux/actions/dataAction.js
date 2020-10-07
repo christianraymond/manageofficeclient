@@ -122,6 +122,7 @@ export const viewOffice = (officeId) => (dispatch) => {
     });
 };
 
+//Todo,
 ///VIEW OFFICE IN A DINAMIC PAGE
 export const viewOfficeDetails = (officeName) => (dispatch) => {
   dispatch({ type: LOADING_DATA });

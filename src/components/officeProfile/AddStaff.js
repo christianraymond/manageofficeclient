@@ -71,7 +71,8 @@ export class AddStaff extends Component {
     return (
       <Grid container>
         <Grid item xs={10}>
-          <Typography variant="h6">Staff Member(s)</Typography>
+          <Typography variant="h6">Staff Member(s)
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <Button

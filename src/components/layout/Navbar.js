@@ -8,7 +8,7 @@ import Tolbar from "@material-ui/core/Toolbar";
 import { Button } from "@material-ui/core";
 //Icons
 import HomeIcon from "@material-ui/icons/Home";
-import { OfficeView } from "../officeProfile/OfficeView";
+
 
 class Navbar extends Component {
   render() {

@@ -33,7 +33,9 @@ class Staffs extends Component {
                     <PersonIcon className={classes.staffIcons} />
                   </Grid>
                   <Grid item sm={10}>
-                    <Typography variant="body1">{staff.staffName} {staff.lastName}</Typography>
+                    <Typography variant="body1">
+                      {staff.staffName} {staff.lastName}
+                    </Typography>
                   </Grid>
                   <Grid item sm={1}>
                     <MoreVertOutlinedIcon className={classes.addEtedIcon} />

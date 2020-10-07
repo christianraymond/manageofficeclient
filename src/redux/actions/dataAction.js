@@ -54,20 +54,20 @@ export const addOffice = (newOffice) => (dispatch) => {
     });
 };
 //ADD NEW STAFF MEMEBER
-export const addStaff = (officeId, staffName) => (dispatch) => {
+export const addStaff = (officeId, newStaff) => (dispatch) => {
   axios
-    .post(`/office/${officeId}/staff`, staffName)
+    .post(`/office/${officeId}/newStaff`, newStaff)
     .then((res) => {
       dispatch({
         type: ADD_STAFF,
-        payload: res.data,
+        payload: res.data
       });
       dispatch(clearErrors());
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       });
     });
 };

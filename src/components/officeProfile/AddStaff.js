@@ -30,19 +30,17 @@ export class AddStaff extends Component {
   state = {
     open: false,
     errors: {},
-    firstName: "",
-    lastName: "",
+    staffName: "",
   };
 
-  //Handle errors
+  //Errors handling
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
       this.setState({
-        firstName: "",
-        lastName: "",
+        staffName: "",
       });
     }
   }
@@ -61,8 +59,7 @@ export class AddStaff extends Component {
   hanldeSubmit = (e) => {
     e.preventDefault();
     this.props.addStaff(this.props.officeId, {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      staffName: this.state.staffName,
     });
   };
   render() {
@@ -74,7 +71,12 @@ export class AddStaff extends Component {
           <Typography variant="h6">Staff Member(s)</Typography>
         </Grid>
         <Grid item xs={2}>
-          <Button variant="outlined" color="default" onClick={this.handleOpen} style={{fontSize:'10px'}}>
+          <Button
+            variant="outlined"
+            color="default"
+            onClick={this.handleOpen}
+            style={{ fontSize: "10px" }}
+          >
             Add Staff
           </Button>
         </Grid>
@@ -101,16 +103,16 @@ export class AddStaff extends Component {
                 autoFocus
                 marging="dense"
                 margin="dense"
-                name="firstName"
+                name="staffName"
                 label="First Name"
                 type="text"
                 required
                 fullWidth
                 className={classes.textField}
-                value={this.state.firstName}
+                value={this.state.staffName}
                 onChange={this.handleChange}
               />
-              <TextField
+              {/* <TextField
                 autoFocus
                 margin="dense"
                 name="lastName"
@@ -121,7 +123,7 @@ export class AddStaff extends Component {
                 className={classes.textField}
                 value={this.state.lastName}
                 onChange={this.handleChange}
-              />
+              /> */}
               <Grid container justify="center">
                 <Grid item>
                   <Button

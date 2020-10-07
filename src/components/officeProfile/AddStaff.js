@@ -31,6 +31,7 @@ export class AddStaff extends Component {
     open: false,
     errors: {},
     staffName: "",
+    lastName: ""
   };
 
   //Errors handling
@@ -41,6 +42,7 @@ export class AddStaff extends Component {
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
       this.setState({
         staffName: "",
+        lastName: ""
       });
     }
   }
@@ -60,6 +62,7 @@ export class AddStaff extends Component {
     e.preventDefault();
     this.props.addStaff(this.props.officeId, {
       staffName: this.state.staffName,
+      lastName: this.state.lastName
     });
   };
   render() {
@@ -112,7 +115,7 @@ export class AddStaff extends Component {
                 value={this.state.staffName}
                 onChange={this.handleChange}
               />
-              {/* <TextField
+              <TextField
                 autoFocus
                 margin="dense"
                 name="lastName"
@@ -123,7 +126,7 @@ export class AddStaff extends Component {
                 className={classes.textField}
                 value={this.state.lastName}
                 onChange={this.handleChange}
-              /> */}
+              />
               <Grid container justify="center">
                 <Grid item>
                   <Button

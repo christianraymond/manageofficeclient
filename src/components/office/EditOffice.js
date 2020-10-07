@@ -39,9 +39,9 @@ export class EditOffice extends Component {
     officeMaxOcupant: "",
     open: false,
   };
-  mapUserDetailsTopState = (officeDetails) => {
+  mapOfficerDetailsTopState = (officeDetails) => {
     this.setState({
-      officename: officeDetails.officename ? officeDetails.officename : "",
+      officename: this.props.officeDetails.officename ? officeDetails.officename : "",
       officeEmail: officeDetails.officeEmail ? officeDetails.officeEmail : "",
       officeTell: officeDetails.officeTell ? officeDetails.officeTell : "",
       officeAddress: officeDetails.officeAddress
@@ -54,14 +54,14 @@ export class EditOffice extends Component {
   };
   handleOpen = () => {
     this.setState({ open: true });
-    this.mapUserDetailsTopState(this.props.officeDetails);
+    this.mapOfficerDetailsTopState(this.props.officeDetails);
   };
   handleClose = () => {
     this.setState({ open: false });
   };
   componentDidMount() {
     const { officeDetails } = this.props;
-    this.mapUserDetailsTopState(officeDetails);
+    this.mapOfficerDetailsTopState(officeDetails);
   }
   handleChange = (event) => {
     this.setState({

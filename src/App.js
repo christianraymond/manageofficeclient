@@ -15,10 +15,12 @@ import { logoutUser, getUserData } from './redux/actions/userAtion'
 import Navbar from "./components/layout/Navbar";
 //Pages
 import home from "./pages/home";
+import office from './pages/viewOfficeDetails';
 import login from "./pages/login";
 import signup from "./pages/signup";
 import Authenticated from "./util/Authenticated";
 import axios from "axios";
+import { Offices } from "./components/officeProfile/Offices";
 
 const token = localStorage.FBIdToken;
 if (token) {
@@ -52,6 +54,7 @@ function App() {
                 path="/signup"
                 component={signup}
               />
+              <Route exact path="/office/:officeId" component={Offices}/>
             </Switch>
           </div>
         </Router>

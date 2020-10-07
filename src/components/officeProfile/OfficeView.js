@@ -17,7 +17,7 @@ import UnfoldMore from "@material-ui/icons/UnfoldMore";
 
 //Redux stuff
 import { connect } from "react-redux";
-import { viewOffice } from "../../redux/actions/dataAction";
+import { viewOffice, clearErrors } from "../../redux/actions/dataAction";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -52,6 +52,8 @@ export class OfficeView extends Component {
   };
   handleClose = () => {
     this.setState({ open: false });
+    this.props.clearErrors();
+
   };
   render() {
     const {
@@ -143,6 +145,7 @@ OfficeView.propTypes = {
   officeId: PropTypes.string.isRequired,
   office: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -152,6 +155,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   viewOffice,
+  clearErrors,
 };
 
 export default connect(

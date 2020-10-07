@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import AddOffice from '../officeProfile/AddOffice';
+import AddOffice from "../officeProfile/AddOffice";
 import { Link } from "react-router-dom";
 import MyButton from "../../util/MyButton";
 //MUI stuff
@@ -15,12 +15,12 @@ class Navbar extends Component {
     return (
       <AppBar>
         <Tolbar style={{ margin: "auto" }}>
-          <Button style={{color:"white"}}>Office Man</Button>
+          <Button style={{ color: "white" }}>Office Man</Button>
           <Fragment>
-           <AddOffice/>
+            <AddOffice />
             <Link to="/">
               <MyButton tip="Home">
-                <HomeIcon style={{color:"white"}}/>
+                <HomeIcon style={{ color: "white" }} />
               </MyButton>
             </Link>
           </Fragment>

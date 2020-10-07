@@ -9,6 +9,7 @@ import {
   STOP_LOADING_UI,
   LOADING_OFFICE,
   ADD_STAFF,
+  SET_OFFICES,
 } from "../types";
 import axios from "axios";
 
@@ -36,10 +37,7 @@ export const getOffices = () => (dispatch) => {
 export const addOffice = (newOffice) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
-    .post(
-      "/office",
-      newOffice
-    )
+    .post("/office", newOffice)
     .then((res) => {
       dispatch({
         type: ADD_OFFICE,
@@ -62,14 +60,14 @@ export const addStaff = (officeId, staffName) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: ADD_STAFF,
-        payload: res.data
+        payload: res.data,
       });
-      // dispatch(clearErrors());
+      dispatch(clearErrors());
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data,
       });
     });
 };
@@ -77,10 +75,7 @@ export const addStaff = (officeId, staffName) => (dispatch) => {
 export const editOfficeDetails = (officeDetails, id) => (dispatch) => {
   dispatch({ type: LOADING_OFFICE });
   axios
-    .post(
-      "/office",
-      officeDetails
-    )
+    .post("/office", officeDetails)
     .then(() => {
       dispatch(getOffices());
     })
@@ -125,4 +120,24 @@ export const viewOffice = (officeId) => (dispatch) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+///VIEW OFFICE IN A DINAMIC PAGE
+export const viewOfficeDetails = (officeName) => (dispatch) => {
+  dispatch({ type: LOADING_DATA });
+  axios.get(`/office/${officeName}`).then((res) => {
+    dispatch({
+      type: SET_OFFICES,
+      payload: res.data.offices,
+    }).catch(() => {
+      dispatch({
+        type: SET_OFFICES,
+        payload: null,
+      });
+    });
+  });
+};
+//Clear erros func
+export const clearErrors = () => (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };

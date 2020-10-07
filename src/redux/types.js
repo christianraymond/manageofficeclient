@@ -18,4 +18,3 @@ export const ADD_OFFICE = 'ADD_OFFICE';
 export const STOP_LOADING_UI = 'STOP_LOADING_UI';
 export const ADD_STAFF = 'ADD_STAFF'
 
-

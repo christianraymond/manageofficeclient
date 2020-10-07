@@ -12,7 +12,7 @@ export default{
           constrastText: "#fff",
         },
       },
-      //the object to be spread
+      //the object to be spreaded
       spreadThis:{
         typography: {
           userNextVariants: true,

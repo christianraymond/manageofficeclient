@@ -25,7 +25,7 @@ const styles = {
   },
   imageStyle: {
     minWidth: 50,
-    backgroundColor:"MediumTurquoise",
+    backgroundColor: "MediumTurquoise",
     width: "10%",
     fontSize: 50,
     height: 150,
@@ -35,11 +35,11 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-around",
   },
-  officeMember:{
-    position: 'absolute',
-    bottom: '10%',
-    top: '100px',
-    left: '4px',
+  officeMember: {
+    position: "absolute",
+    bottom: "10%",
+    top: "100px",
+    left: "4px",
     color: "white",
     fontSize: 15,
   },
@@ -69,7 +69,7 @@ export class Offices extends Component {
         officeTellNumber,
         officeMaxOcupant,
         officeId,
-        staffsMember
+        staffsMember,
       },
     } = this.props;
     return (
@@ -79,10 +79,15 @@ export class Offices extends Component {
             <FaUserFriends className={classes.imageStyle} />
           </Grid>
           <Grid item xm={1}>
-            <Typography className={classes.officeMember}>07/{officeMaxOcupant}</Typography>
+            <Typography className={classes.officeMember}>
+              07/{officeMaxOcupant}
+            </Typography>
           </Grid>
           <Grid item xs={4}>
-            <CardContent className={classes.content}>
+            <CardContent
+              className={classes.content}
+              className={classes.cardContent}
+            >
               <Typography
                 variant="h6"
                 component={Link}

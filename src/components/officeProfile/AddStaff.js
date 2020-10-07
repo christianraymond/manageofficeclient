@@ -31,13 +31,19 @@ export class AddStaff extends Component {
     open: false,
     errors: {},
     firstName: "",
-    lastName: ""
+    lastName: "",
   };
 
   //Handle errors
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({
+        firstName: "",
+        lastName: "",
+      });
     }
   }
 
@@ -64,11 +70,11 @@ export class AddStaff extends Component {
     const errors = this.state.errors;
     return (
       <Grid container>
-        <Grid item sm={4}>
-          <Typography variant="body2">Staff Member</Typography>
+        <Grid item xs={10}>
+          <Typography variant="h6">Staff Member(s)</Typography>
         </Grid>
-        <Grid item sm={8}>
-          <Button variant="outlined" color="default" onClick={this.handleOpen}>
+        <Grid item xs={2}>
+          <Button variant="outlined" color="default" onClick={this.handleOpen} style={{fontSize:'10px'}}>
             Add Staff
           </Button>
         </Grid>

@@ -16,5 +16,5 @@ body {
   color: #fff;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }

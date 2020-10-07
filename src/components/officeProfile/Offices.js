@@ -29,7 +29,7 @@ const styles = {
     padding: 0,
     "&:last-child": {
       paddingBottom: 0,
-    },
+    }
   },
   imageStyle: {
     minWidth: 50,

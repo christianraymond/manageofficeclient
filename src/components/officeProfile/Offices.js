@@ -22,6 +22,7 @@ const styles = {
     display: "flex",
     marginBottom: 20,
     height: 150,
+    backgroundColor: 'Cornsilk',
   },
   cardContent: {
     padding: 0,
@@ -94,13 +95,7 @@ export class Offices extends Component {
               className={classes.content}
               className={classes.cardContent}
             >
-              <Typography
-                variant="h6"
-                component={Link}
-                to={`/office`}
-                color="primary"
-                className={classes.officeName}
-              >
+              <Typography variant="h6" color="primary" className={classes.officeName}>
                 {officeName}
               </Typography>
               <Typography variant="body2" className={classes.officename}>

@@ -18,6 +18,10 @@ import { connect } from "react-redux";
 const styles = {
   paper: {
     padding: 20,
+    
+  },
+  papercontent:{
+    backgroundColor: 'Cornsilk',
   },
   profile: {
     "& .image-wrapper": {
@@ -27,6 +31,7 @@ const styles = {
         position: "absolute",
         top: "80",
         left: "70",
+        backgroundColor: 'Cornsilk',
       },
     },
     "& .profile-image": {
@@ -67,7 +72,7 @@ export class OfficeProfile extends Component {
   render() {
     const { classes, loading } = this.props;
     let profileMarkup = !loading ? (
-      <Paper>
+      <Paper className={classes.papercontent}>
         <Typography variant="body2" align="center">
           In the future you will need to register before accessing office page!
           {/* <WarningIcon/> */}

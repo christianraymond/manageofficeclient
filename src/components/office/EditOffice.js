@@ -41,6 +41,7 @@ export class EditOffice extends Component {
   };
   mapOfficerDetailsTopState = (officeDetails) => {
     this.setState({
+      ///TypeError: Cannot read property 'officename' of undefined | BUG to fix on editing
       officename: this.props.officeDetails.officename ? officeDetails.officename : "",
       officeEmail: officeDetails.officeEmail ? officeDetails.officeEmail : "",
       officeTell: officeDetails.officeTell ? officeDetails.officeTell : "",

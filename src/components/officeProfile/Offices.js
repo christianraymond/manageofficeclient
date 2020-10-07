@@ -23,6 +23,12 @@ const styles = {
     marginBottom: 20,
     height: 150,
   },
+  cardContent: {
+    padding: 0,
+    "&:last-child": {
+      paddingBottom: 0
+    }
+  },
   imageStyle: {
     minWidth: 50,
     backgroundColor: "MediumTurquoise",

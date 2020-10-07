@@ -1,5 +1,5 @@
 
-<img src="https://github.com/christianraymond/manageofficeclient/blob/master/images/app-screenshot.png" alt="screenshot">
+<img src="https://github.com/christianraymond/manageofficeclient/blob/master/src/images/app-screenshot.png" alt="screenshot">
 
 ## How to run the app
 

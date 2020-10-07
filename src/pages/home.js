@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Offices from "../components/officeProfile/Offices";
-import OfficeProfile from "../components/office/OfficeProfile";
+import RegisterOffice from "../components/office/RegisterOffice";
 
 class Home extends Component {
   state = {
@@ -36,7 +36,7 @@ class Home extends Component {
           {recentOfficesMarkup}
         </Grid>
         <Grid item sm={4} xm={12}>
-          <OfficeProfile />
+          <RegisterOffice />
         </Grid>
       </Grid>
     );

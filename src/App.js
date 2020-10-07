@@ -15,6 +15,7 @@ import { logoutUser, getUserData } from './redux/actions/userAtion'
 import Navbar from "./components/layout/Navbar";
 //Pages
 import home from "./pages/home";
+import officeview from './pages/officeview';
 import login from "./pages/login";
 import signup from "./pages/signup";
 import Authenticated from "./util/Authenticated";
@@ -52,6 +53,7 @@ function App() {
                 path="/signup"
                 component={signup}
               />
+              <Route exact path="/office/:" component={officeview}/>
             </Switch>
           </div>
         </Router>

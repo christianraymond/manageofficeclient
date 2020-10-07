@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import EditOffice from "../office/EditOffice";
 import DeleteOffice from "../officeProfile/DeleteOffice";
 import OfficeView from "../officeProfile/OfficeView";
@@ -8,13 +9,13 @@ import { FaEnvelope } from "react-icons/fa";
 import { FaPhoneSquare } from "react-icons/fa";
 import { FaUserFriends } from "react-icons/fa";
 import withStyles from "@material-ui/core/styles/withStyles";
-import { Link } from "react-router-dom";
 
 //MUI stuff
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import MuiLink from "@material-ui/core/Link";
 
 const styles = {
   card: {
@@ -22,13 +23,13 @@ const styles = {
     display: "flex",
     marginBottom: 20,
     height: 150,
-    backgroundColor: 'Cornsilk',
+    backgroundColor: "Cornsilk",
   },
   cardContent: {
     padding: 0,
     "&:last-child": {
-      paddingBottom: 0
-    }
+      paddingBottom: 0,
+    },
   },
   imageStyle: {
     minWidth: 50,
@@ -87,7 +88,7 @@ export class Offices extends Component {
           </Grid>
           <Grid item xm={1}>
             <Typography className={classes.officeMember}>
-              07/{officeMaxOcupant}
+              {staffsMember}/{officeMaxOcupant}
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -95,9 +96,17 @@ export class Offices extends Component {
               className={classes.content}
               className={classes.cardContent}
             >
-              <Typography variant="h6" color="primary" className={classes.officeName}>
-                {officeName}
-              </Typography>
+              {/* <MuiLink
+               component={Link} to={`/offices/${officeName}`} color="primary" variant="h6"
+              ></MuiLink> */}
+              <MuiLink>
+                <Typography
+                  component={Link}
+                  to={`/office/${officeId}`}
+                  color="primary"
+                  variant="h6"
+                >{officeName}</Typography>
+              </MuiLink>
               <Typography variant="body2" className={classes.officename}>
                 <FaMapMarkerAlt /> {officeLocation}
               </Typography>

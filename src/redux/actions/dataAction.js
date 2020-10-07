@@ -124,9 +124,9 @@ export const viewOffice = (officeId) => (dispatch) => {
 
 //Todo,
 ///VIEW OFFICE IN A DINAMIC PAGE
-export const viewOfficeDetails = (officeName) => (dispatch) => {
+export const viewOfficeDetails = (officeId) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
-  axios.get(`/office/${officeName}`).then((res) => {
+  axios.get(`/office/${officeId}`).then((res) => {
     dispatch({
       type: SET_OFFICES,
       payload: res.data.offices,

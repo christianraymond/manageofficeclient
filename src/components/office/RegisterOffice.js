@@ -68,7 +68,7 @@ const styles = {
   },
 };
 
-export class OfficeProfile extends Component {
+export class RegisterOffice extends Component {
   render() {
     const { classes, loading } = this.props;
     let profileMarkup = !loading ? (
@@ -112,10 +112,10 @@ const mapStateToProps = (state) => ({
   office: state.office,
 });
 
-OfficeProfile.propTypes = {
+RegisterOffice.propTypes = {
   office: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   // logoutUser: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(OfficeProfile));
+export default connect(mapStateToProps)(withStyles(styles)(RegisterOffice));

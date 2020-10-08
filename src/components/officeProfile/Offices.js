@@ -99,14 +99,12 @@ export class Offices extends Component {
               {/* <MuiLink
                component={Link} to={`/offices/${officeName}`} color="primary" variant="h6"
               ></MuiLink> */}
-              <MuiLink>
                 <Typography
                   component={Link}
                   to={`/office/${officeId}`}
                   color="primary"
                   variant="h6"
-                >{officeName}</Typography>
-              </MuiLink>
+                >{officeName}</Typography>         
               <Typography variant="body2" className={classes.officename}>
                 <FaMapMarkerAlt /> {officeLocation}
               </Typography>

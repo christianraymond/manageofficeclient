@@ -11,7 +11,6 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 //Icons
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from '@material-ui/core/Tooltip';
-import WarningIcon from '@material-ui/icons/Warning';
 //Redux staff
 import { connect } from "react-redux";
 

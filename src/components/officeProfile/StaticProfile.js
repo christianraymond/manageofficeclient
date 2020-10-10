@@ -1,16 +1,14 @@
 import React from "react";
-import MuiLink from "@material-ui/core/Link";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { FaEnvelope } from "react-icons/fa";
-import { FaPhoneSquare } from "react-icons/fa";
-import { FaUserFriends } from "react-icons/fa";
 import withStyles from "@material-ui/core/styles/withStyles";
 ///Own components
 import AddStaff from "./AddStaff";
 import Staffs from "./Staffs";
 //MUI stuff
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import Tooltip from "@material-ui/core/Tooltip";
+import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
@@ -37,6 +35,9 @@ const styles = (theme) => ({
   officeDes: {
     color: "white",
   },
+  backButton: {
+    color: "#fff",
+  },
 });
 
 const StaticProfile = (props) => {
@@ -48,24 +49,33 @@ const StaticProfile = (props) => {
       officeEmail,
       officeTellNumber,
       officeMaxOcupant,
-      staffsMember,
       officeId,
       staffs,
     },
   } = props;
+
+  function handleReturn() {
+    window.location.replace("/");
+  }
   return (
     <Grid container>
-      <Grid item sm={5} style={{ backgroundColor: "#0dccff"}}>
+      <Grid item sm={4} style={{ backgroundColor: "#0dccff" }}>
         <img
           src="https://firebasestorage.googleapis.com/v0/b/manageofficeproj-23044.appspot.com/o/offceDefaultColor.jpg?alt=media"
           alt="office image"
           className={classes.officeIamge}
         />
       </Grid>
-      <Grid item sm={7} style={{ backgroundColor: "#0dccff" }}>
+      <Grid sm={2} style={{ backgroundColor: "#0dccff" }}>
+        <Tooltip title="Go back" placement="top">
+          <IconButton onClick={handleReturn}>
+            <KeyboardBackspaceIcon className={classes.backButton} />
+          </IconButton>
+        </Tooltip>
+      </Grid>
+      <Grid item sm={6} style={{ backgroundColor: "#0dccff" }}>
         <Typography
           className={classes.officeDes}
-          component={Link}
           color="primary"
           variant="h6"
           to={`/offices/${officeName}`}

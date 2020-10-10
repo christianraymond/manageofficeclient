@@ -7,15 +7,15 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 // import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 //Redux
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
 import store from "./redux/store";
-import { SET_AUTHENTICATED } from './redux/types';
-import { logoutUser, getUserData } from './redux/actions/userAtion'
+import { SET_AUTHENTICATED } from "./redux/types";
+import { logoutUser, getUserData } from "./redux/actions/userAtion";
 //Component
 import Navbar from "./components/layout/Navbar";
 //Pages
 import home from "./pages/home";
-import officeview from './pages/officeview';
+import officeview from "./pages/officeview";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import Authenticated from "./util/Authenticated";
@@ -28,11 +28,11 @@ if (token) {
   if (token.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser());
     window.location.href("/login");
-  }else{
-    store.dispatch({ type: SET_AUTHENTICATED});
-    axios.defaults.headers.common['Authorization'] = token;
-    store.dispatch(getUserData())
-  } 
+  } else {
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common["Authorization"] = token;
+    store.dispatch(getUserData());
+  }
 }
 
 const theme = createMuiTheme(themeFile);
@@ -44,16 +44,13 @@ function App() {
           <Navbar />
           <div className="container">
             <Switch>
+              <Route
+                exact
+                path="/office/:officeId"
+                component={officeview} />
               <Route exact path="/" component={home} />
-              <Authenticated
-                path="/login"
-                component={login}
-              />
-              <Authenticated
-                path="/signup"
-                component={signup}
-              />
-              <Route exact path="/office/:" component={officeview}/>
+              <Authenticated path="/login" component={login} />
+              <Authenticated path="/signup" component={signup} />
             </Switch>
           </div>
         </Router>

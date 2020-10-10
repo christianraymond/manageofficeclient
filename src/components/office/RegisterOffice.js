@@ -20,9 +20,6 @@ const styles = {
     padding: 20,
     
   },
-  papercontent:{
-    backgroundColor: 'Cornsilk',
-  },
   profile: {
     "& .image-wrapper": {
       textAlign: "center",
@@ -31,7 +28,6 @@ const styles = {
         position: "absolute",
         top: "80",
         left: "70",
-        backgroundColor: 'Cornsilk',
       },
     },
     "& .profile-image": {

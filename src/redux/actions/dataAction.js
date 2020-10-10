@@ -60,19 +60,19 @@ export const addStaff = (officeId, newStaff) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: ADD_STAFF,
-        payload: res.data
+        payload: res.data,
       });
       dispatch(clearErrors());
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data,
       });
     });
 };
 //Edit office
-export const editOfficeDetails = (officeDetails, id) => (dispatch) => {
+export const editOfficeDetails = (officeDetails) => (dispatch) => {
   dispatch({ type: LOADING_OFFICE });
   axios
     .post("/office", officeDetails)
@@ -124,20 +124,24 @@ export const viewOffice = (officeId) => (dispatch) => {
 
 //Todo,
 ///VIEW OFFICE IN A DINAMIC PAGE
-export const viewOfficeDetails = (officeId) => (dispatch) => {
-  dispatch({ type: LOADING_DATA });
-  axios.get(`/office/${officeId}`).then((res) => {
-    dispatch({
-      type: SET_OFFICES,
-      payload: res.data.offices,
-    }).catch(() => {
-      dispatch({
-        type: SET_OFFICES,
-        payload: null,
-      });
-    });
-  });
-};
+// export const viewOfficeDetails = (officeId) => (dispatch) => {
+//   dispatch({ type: LOADING_DATA });
+//   axios
+//     .get(`/office/${officeId}`)
+//     .then((res) => {
+//       dispatch({
+//         type: SET_OFFICES,
+//         payload: res.data.offices,
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       dispatch({
+//         type: SET_OFFICES,
+//         payload: null,
+//       });
+//     });
+// };
 //Clear erros func
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });

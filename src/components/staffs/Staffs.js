@@ -18,6 +18,7 @@ const styles = (theme) => ({
   },
 });
 class Staffs extends Component {
+  handleChange = () => {};
   render() {
     const { staffs, classes } = this.props;
     return (
@@ -27,23 +28,23 @@ class Staffs extends Component {
           console.log(staffs);
           return (
             <Fragment key={index}>
-              <Grid item sm={12}>
+              <Grid item xs={12}>
                 <Grid container>
-                  <Grid item sm={1}>
+                  <Grid item xs={1}>
                     <PersonIcon className={classes.staffIcons} />
                   </Grid>
-                  <Grid item sm={10}>
+                  <Grid item xs={10}>
                     <Typography variant="body1">
                       {staff.staffName} {staff.lastName}
                     </Typography>
                   </Grid>
-                  <Grid item sm={1}>
+                  <Grid item xs={1}>
                     <MoreVertOutlinedIcon className={classes.addEtedIcon} />
                   </Grid>
                 </Grid>
               </Grid>
               {index !== staffs.length - 1 && (
-                <hr className={classes.visibleSeparator} /> //Show rulerLine unless it's the last index
+                <hr className={classes.visibleSeparator} /> //ONly Show rulerLine unless it's the last index
               )}
             </Fragment>
           );

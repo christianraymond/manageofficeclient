@@ -3,7 +3,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import Offices from "../components/officeProfile/Offices";
+import OfficesDashboard from "../components/office/OfficesDashboard";
 import RegisterOffice from "../components/office/RegisterOffice";
 
 class Home extends Component {
@@ -25,7 +25,7 @@ class Home extends Component {
   render() {
     let recentOfficesMarkup = this.state.offices ? (
       this.state.offices.map((office, index) => (
-        <Offices key={index} office={office} />
+        <OfficesDashboard key={index} office={office} />
       ))
     ) : (
       <CircularProgress size={50} color="secondary" />

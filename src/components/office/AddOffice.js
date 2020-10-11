@@ -188,7 +188,7 @@ class AddOffice extends Component {
                 />
                 <TextField
                   name="officeMaxOcupant"
-                  type="text"
+                  type="number"
                   label="Max number of occupants"
                   multiline
                   row="3"

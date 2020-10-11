@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import MuiLink from '@material-ui/core/Link';
-import EditOffice from "../office/EditOffice";
-import DeleteOffice from "../officeProfile/DeleteOffice";
-import OfficeView from "../officeProfile/OfficeView";
+import EditOffice from "./EditOffice";
+import DeleteOffice from "./DeleteOffice";
+import OfficeView from "./OfficeView";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaPhoneSquare } from "react-icons/fa";
@@ -65,7 +65,7 @@ const styles = {
     fontSize: 14,
   },
 };
-export class Offices extends Component {
+export class OfficesDashboard extends Component {
   render() {
     const {
       classes,
@@ -88,7 +88,6 @@ export class Offices extends Component {
           <Grid item xm={1}>
             <Typography className={classes.officeMember}>
               {staffsMember}02/{officeMaxOcupant}
-              {/* StaffsMember is a field inside office table */}
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -134,9 +133,9 @@ export class Offices extends Component {
   }
 }
 
-Offices.prototypes = {
+OfficesDashboard.prototypes = {
   office: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Offices);
+export default withStyles(styles)(OfficesDashboard);

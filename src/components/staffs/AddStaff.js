@@ -31,7 +31,7 @@ export class AddStaff extends Component {
     open: false,
     errors: {},
     staffName: "",
-    lastName: ""
+    lastName: "",
   };
 
   //Errors handling
@@ -42,7 +42,7 @@ export class AddStaff extends Component {
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
       this.setState({
         staffName: "",
-        lastName: ""
+        lastName: "",
       });
     }
   }
@@ -62,7 +62,7 @@ export class AddStaff extends Component {
     e.preventDefault();
     this.props.addStaff(this.props.officeId, {
       staffName: this.state.staffName,
-      lastName: this.state.lastName
+      lastName: this.state.lastName,
     });
   };
   render() {
@@ -71,8 +71,7 @@ export class AddStaff extends Component {
     return (
       <Grid container>
         <Grid item xs={10}>
-          <Typography variant="h6">Staff Member(s)
-          </Typography>
+          <Typography variant="body1">Staff Members</Typography>
         </Grid>
         <Grid item xs={2}>
           <Button

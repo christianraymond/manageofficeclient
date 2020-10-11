@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import AddOffice from "../officeProfile/AddOffice";
+import AddOffice from "../office/AddOffice";
 import { Link } from "react-router-dom";
 import MyButton from "../../util/MyButton";
 //MUI stuff

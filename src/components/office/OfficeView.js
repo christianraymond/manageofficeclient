@@ -3,8 +3,8 @@ import withStyles from "@material-ui/styles/withStyles";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import MyButton from "../../util/MyButton";
-import Staffs from "./Staffs";
-import AddStaff from "./AddStaff";
+import Staffs from "../staffs/Staffs";
+import AddStaff from "../staffs/AddStaff";
 //Mui stuff
 import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";

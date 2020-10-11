@@ -3,8 +3,8 @@ import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 ///Own components
-import AddStaff from "./AddStaff";
-import Staffs from "./Staffs";
+import AddStaff from "../staffs/AddStaff";
+import Staffs from "../staffs/Staffs";
 //MUI stuff
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -14,10 +14,10 @@ import Grid from "@material-ui/core/Grid";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
+
   officeIamge: {
     maxWidth: 200,
     height: 200,
-    borderRadius: "50%",
     objectFit: "cover",
   },
   dialogContent: {
@@ -58,64 +58,66 @@ const StaticProfile = (props) => {
     window.location.replace("/");
   }
   return (
-    <Grid container>
-      <Grid item sm={4} style={{ backgroundColor: "#0dccff" }}>
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/manageofficeproj-23044.appspot.com/o/offceDefaultColor.jpg?alt=media"
-          alt="office image"
-          className={classes.officeIamge}
-        />
-      </Grid>
-      <Grid sm={2} style={{ backgroundColor: "#0dccff" }}>
-        <Tooltip title="Go back" placement="top">
-          <IconButton onClick={handleReturn}>
-            <KeyboardBackspaceIcon className={classes.backButton} />
-          </IconButton>
-        </Tooltip>
-      </Grid>
-      <Grid item sm={6} style={{ backgroundColor: "#0dccff" }}>
-        <Typography
-          className={classes.officeDes}
-          color="primary"
-          variant="h6"
-          to={`/offices/${officeName}`}
-        >
-          {officeName}
-        </Typography>
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs={4} style={{ backgroundColor: "#004763" }}>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/manageofficeproj-23044.appspot.com/o/offceDefaultColor.jpg?alt=media"
+            alt="office image"
+            className={classes.officeIamge}
+          />
+        </Grid>
+        <Grid item xs={2} style={{ backgroundColor: "#004763" }}>
+          <Tooltip title="Go back" placement="top">
+            <IconButton onClick={handleReturn}>
+              <KeyboardBackspaceIcon className={classes.backButton} />
+            </IconButton>
+          </Tooltip>
+        </Grid>
+        <Grid item xs={6} style={{ backgroundColor: "#004763" }}>
+          <Typography
+            className={classes.officeDes}
+            color="primary"
+            variant="h6"
+            to={`/offices/${officeName}`}
+          >
+            {officeName}
+          </Typography>
+          <hr className={classes.invisibleSeparator} />
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            className={classes.officeDes}
+          >
+            Address: {officeLocation}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            className={classes.officeDes}
+          >
+            Email: {officeEmail}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            className={classes.officeDes}
+          >
+            Office Tell: {officeTellNumber}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            className={classes.officeDes}
+          >
+            Max Capacity: {officeMaxOcupant}
+          </Typography>
+        </Grid>
         <hr className={classes.invisibleSeparator} />
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          className={classes.officeDes}
-        >
-          Address: {officeLocation}
-        </Typography>
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          className={classes.officeDes}
-        >
-          Email: {officeEmail}
-        </Typography>
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          className={classes.officeDes}
-        >
-          Office Tell: {officeTellNumber}
-        </Typography>
-        <Typography
-          variant="body1"
-          color="textSecondary"
-          className={classes.officeDes}
-        >
-          Max Capacity: {officeMaxOcupant}
-        </Typography>
+        <AddStaff officeId={officeId} />
+        <Staffs staffs={staffs} />
       </Grid>
-      <hr className={classes.invisibleSeparator} />
-      <AddStaff officeId={officeId} />
-      <Staffs staffs={staffs} />
-    </Grid>
+    </div>
   );
 };
 

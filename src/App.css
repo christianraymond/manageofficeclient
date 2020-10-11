@@ -18,3 +18,15 @@ body {
 a {
   text-decoration: none !important;
 }
+.input-search {
+  display: block;
+  width: 100%;
+  padding: 8px 4px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  outline: none;
+  &::-webkit-input-placeholder {
+    color: #758A9D;
+    font-weight: 300;
+  }
+}
